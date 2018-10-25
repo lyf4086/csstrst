@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    html,body{height:100%;}
+    body{perspective: 1000px;background: black;}
+    .content{width:200px;height:200px;
+    margin:200px auto;position: relative;border-radius: 50%;}
+    .line{width:20px;height:2px;position: absolute;
+    top:99px;left:0;transform-origin: 100px center;}
+    .g1{position: absolute;width: 20px;height:2px;left:0;top:0;
+       background: red; }
+    .g2{position: absolute;width: 20px;height:2px;left:0;top:0;
+    background: blue;}
+    .g3{position: absolute;width: 20px;height:2px;left:0;top:0;
+       background: green; }
+    .g4{position: absolute;width: 20px;height:2px;left:0;top:0;
+    background: yellow;}
+
+
+
+    </style>
+</head>
+<body>
+   <div class="content">
+       <!-- <div class="line">
+           <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+       </div>    -->
+   </div> 
+<script>
+const content=document.querySelector('.content');
+let num=20;let str='';
+for(let i=0;i<num;i++){
+    str+=`
+        <div class="line">
+           <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+       </div>  
+    `
+}
+content.innerHTML=str;
+const aline=document.querySelectorAll('.line');
+const g1=document.querySelectorAll('.g1');
+const g2=document.querySelectorAll('.g2');
+const g3=document.querySelectorAll('.g3');
+const g4=document.querySelectorAll('.g4');
+for(let i=0;i<num;i++){
+    aline[i].style.transform=`rotateZ(${360/num*i}deg)`
+}
+function fa(){
+    for(let i=0;i<num;i++){
+        g1[i].style.transition=`1s ${0.1*i}s`;
+        g1[i].style.top='-300px';
+        g2[i].style.transition=`1s ${1+0.1*i}s`;
+        g2[i].style.top='-400px'; 
+        g3[i].style.transition=`1s ${2+0.1*i}s`;
+        g3[i].style.top='-500px';
+        g4[i].style.transition=`1s ${3+0.1*i}s`;
+        g4[i].style.top='-600px'; 
+        
+    }
+}
+function hui(){
+    setTimeout(function (){
+        for(let i=0;i<num;i++){
+             g1[i].style.transition='none';
+            g1[i].style.top='0px';
+        }
+       
+    },3000)
+    setTimeout(function (){
+        for(let i=0;i<num;i++){
+            g2[i].style.transition='none';
+            g2[i].style.top='0px';
+        }
+        
+    },4000)
+    setTimeout(function (){
+        for(let i=0;i<num;i++){
+            g3[i].style.transition='none';
+            g3[i].style.top='0px';
+        }
+        
+    },5000)
+    setTimeout(function (){
+        for(let i=0;i<num;i++){
+            g4[i].style.transition='none';
+            g4[i].style.top='0px';
+        }
+       
+    },6000)
+}
+fa();
+hui();
+
+   setInterval(function (){
+        fa();
+        hui()
+    },7000)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
